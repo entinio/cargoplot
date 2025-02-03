@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'Brown';
+  font-style: bold;
+  src:
+    local('Brown'),
+    url('@/assets/fonts/Brown.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BebasNeue';
+  font-style: normal;
+  src:
+    local('BebasNeue'),
+    url('@/assets/fonts/BebasNeue-Regular.ttf') format('truetype');
+}
+
+:root {
+  --vt-c-white: #ffffff;
+  --vt-c-blue: #0955a1;
+  --vt-c-hoverblue: #1a63ad;
+  --vt-c-red: #bb0000;
+  --vt-c-green: #006400;
+  --vt-c-lightgrey: #f2f2f2;
+  --vt-c-grey: #eeeeee;
+  --vt-c-darker-grey: #dddddd;
+
+  --vt-c-text-main: #222;
+}
+
+:root {
+  --color-background: var(--vt-c-lightgrey);
+  --color-text: var(--vt-c-text-main);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    'Brown',
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

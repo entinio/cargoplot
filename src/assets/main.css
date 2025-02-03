@@ -1,0 +1,109 @@
+@import './base.css';
+
+#app {
+  margin: 0;
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'BebasNeue';
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font-family:
+    'Brown',
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+}
+
+button {
+  position: relative;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1em;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+[type='button'] {
+  background-color: var(--vt-c-blue);
+  color: var(--vt-c-white);
+}
+
+[type='button']:hover {
+  background-color: var(--vt-c-hoverblue);
+}
+
+button:active:not([disabled]) {
+  right: -1px;
+  bottom: -1px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+[type='text'],
+[type='date'],
+select {
+  background-color: var(--vt-c-white);
+  border-radius: 0.5rem;
+  border-style: none;
+  padding: 0.625rem;
+  font-size: 1em;
+  min-width: 300px;
+}
+
+[type='date']:disabled {
+  background-color: var(--vt-c-lightgrey);
+  cursor: not-allowed;
+}
+
+label {
+  display: inline-block;
+  min-width: 120px;
+  text-align: right;
+  margin-right: 2rem;
+}
+
+form > div {
+  margin-bottom: 1rem;
+}
+
+form > div:last-child {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.success {
+  color: var(--vt-c-green);
+  font-size: 0.85rem;
+}
+
+.error {
+  color: var(--vt-c-red);
+  font-size: 0.85rem;
+}
