@@ -100,7 +100,7 @@ const errors = [
 const updateETAField = async () => {
   disabled.value = true;
 
-  const newETA = await vesselsETA.value
+  const newETA = await vesselsETA
     .checkVesselETA(currentCargo.value.vessel)
     .catch(() => {
       disabled.value = false;
@@ -125,13 +125,9 @@ const cargoAdd = () => {
   if (!errorCode.value) {
     disabled.value = true;
 
-    fetch("http://localhost:9898/shipment", {
-      method: "POST",
-      body: JSON.stringify(currentCargo.value)
-    })
-      .then(res => res.json())
-      .then(response => {
-        shipments.value.addOneShipment(response);
+    shipments
+      .addShipment(currentCargo.value)
+      .then(() => {
         popVisible.value = false;
       })
       .catch(error => {

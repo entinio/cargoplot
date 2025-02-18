@@ -44,7 +44,7 @@ import { useVesselsETA } from "@/stores/vesselsETA.ts";
 import { useShipments } from "@/stores/shipments.ts";
 
 const props = defineProps({
-  shipment: Object
+  shipment: Object as () => Shipment
 });
 
 const emit = defineEmits<{
@@ -59,25 +59,23 @@ const checkButtonsDisabled = ref(false);
 // existing and unsynced ETA ?
 const ETAneedsToBeUpdated = (shipment: Shipment) => {
   return (
-    shipment["shipment-eta"] !==
-      vesselsETA.value.getVesselETA(shipment.vessel) &&
-    vesselsETA.value.getVesselETA(shipment.vessel)
+    shipment["shipment-eta"] !== vesselsETA.getVesselETA(shipment.vessel) &&
+    vesselsETA.getVesselETA(shipment.vessel)
   );
 };
 
 // existing and synced ETA ?
 const ETAisSynced = (shipment: Shipment) => {
   return (
-    shipment["shipment-eta"] ===
-      vesselsETA.value.getVesselETA(shipment.vessel) &&
-    vesselsETA.value.getVesselETA(shipment.vessel)
+    shipment["shipment-eta"] === vesselsETA.getVesselETA(shipment.vessel) &&
+    vesselsETA.getVesselETA(shipment.vessel)
   );
 };
 
 const checkETA = (vessel: string | null) => {
   checkButtonsDisabled.value = true;
 
-  vesselsETA.value
+  vesselsETA
     .checkVesselETA(vessel)
     .then(() => {
       emit("msg", "success", "ETA state for " + vessel + " has been checked");
@@ -92,10 +90,10 @@ const checkETA = (vessel: string | null) => {
 const updateETA = (shipment: Shipment) => {
   checkButtonsDisabled.value = true;
 
-  const ETA = vesselsETA.value.getVesselETA(shipment.vessel);
+  const ETA = vesselsETA.getVesselETA(shipment.vessel);
 
   if (ETA)
-    shipments.value
+    shipments
       .setShipmentETA(shipment, ETA)
       .then(() => {
         emit(

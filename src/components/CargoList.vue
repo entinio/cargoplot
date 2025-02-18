@@ -3,13 +3,13 @@
   <div id="feedback" :class="msgMode">{{ message || "&nbsp;" }}</div>
 
   <!-- got data ? let's push headers -->
-  <div id="cargoList" v-if="shipments.shipments && shipments.shipments.length">
+  <div id="cargoList" v-if="shipments.shipments.value?.length">
     <div class="listHeader">Vessel</div>
     <div class="listHeader">Customer</div>
     <div class="listHeader">ETA</div>
     <div class="listHeader"></div>
 
-    <template v-for="shipment in shipments.shipments" :key="shipment.id">
+    <template v-for="shipment in shipments.shipments.value" :key="shipment.id">
       <!-- sub component for update life cycle and factorisation. No chance to use v-memo here -->
       <ShipmentRow :shipment="shipment" @msg="handleMessage"></ShipmentRow>
     </template>
@@ -57,7 +57,7 @@ const handleMessage = (
 };
 
 // filling the list on loading
-shipments.value.callShipments();
+shipments.callShipments();
 </script>
 
 <!---------------------------------------------------------------->
